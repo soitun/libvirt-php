@@ -15,11 +15,11 @@
 #define VIR_VERSION_LIBVIRT     2
 
 #ifdef _MSC_VER
-#define EXTWIN
+# define EXTWIN
 #endif
 
 #ifdef EXTWIN
-#define COMPILE_DL_LIBVIRT
+# define COMPILE_DL_LIBVIRT
 #endif
 
 #include <libvirt/libvirt.h>
@@ -32,64 +32,64 @@
 #include "util.h"
 
 #ifndef EXTWIN
-#include <inttypes.h>
-#include <dirent.h>
-#include <strings.h>
-#include <sys/socket.h>
-#include <sys/wait.h>
-#include <netdb.h>
-#include <stdint.h>
-#include <libgen.h>
+# include <inttypes.h>
+# include <dirent.h>
+# include <strings.h>
+# include <sys/socket.h>
+# include <sys/wait.h>
+# include <netdb.h>
+# include <stdint.h>
+# include <libgen.h>
 
 #else
 
-#define PRIx32       "I32x"
-#define PRIx64       "I64x"
+# define PRIx32       "I32x"
+# define PRIx64       "I64x"
 
-#ifdef EXTWIN
-#if (_MSC_VER < 1300)
+# ifdef EXTWIN
+#  if (_MSC_VER < 1300)
 typedef signed char       int8_t;
 typedef signed short      int16_t;
 typedef signed int        int32_t;
 typedef unsigned char     uint8_t;
 typedef unsigned short    uint16_t;
 typedef unsigned int      uint32_t;
-#else
+#  else
 typedef signed __int8     int8_t;
 typedef signed __int16    int16_t;
 typedef signed __int32    int32_t;
 typedef unsigned __int8   uint8_t;
 typedef unsigned __int16  uint16_t;
 typedef unsigned __int32  uint32_t;
-#endif
+#  endif
 typedef signed __int64       int64_t;
 typedef unsigned __int64     uint64_t;
-#endif
+# endif
 
 #endif
 
 #ifdef __i386__
 typedef uint32_t arch_uint;
-#define UINTx PRIx32
+# define UINTx PRIx32
 #else
 typedef uint64_t arch_uint;
-#define UINTx PRIx64
+# define UINTx PRIx64
 #endif
 
-# define DEBUG_SUPPORT
+#define DEBUG_SUPPORT
 
-# ifdef DEBUG_SUPPORT
-#  define DEBUG_CORE
-#  define DEBUG_VNC
-# endif
+#ifdef DEBUG_SUPPORT
+# define DEBUG_CORE
+# define DEBUG_VNC
+#endif
 
 /* PHP functions are prefixed with `zif_` so strip it */
-# define PHPFUNC (__FUNCTION__ + 4)
+#define PHPFUNC (__FUNCTION__ + 4)
 
 #ifdef ZTS
-#define LIBVIRT_G(v) TSRMG(libvirt_globals_id, zend_libvirt_globals *, v)
+# define LIBVIRT_G(v) TSRMG(libvirt_globals_id, zend_libvirt_globals *, v)
 #else
-#define LIBVIRT_G(v) (libvirt_globals.v)
+# define LIBVIRT_G(v) (libvirt_globals.v)
 #endif
 
 #define PHP_LIBVIRT_WORLD_VERSION VERSION
@@ -130,9 +130,9 @@ ZEND_BEGIN_MODULE_GLOBALS(libvirt)
     char *iso_path_ini;
     char *image_path_ini;
     zend_long max_connections_ini;
-# ifdef DEBUG_SUPPORT
+#ifdef DEBUG_SUPPORT
     int debug;
-# endif
+#endif
     resource_info *binding_resources;
     int binding_resources_count;
 ZEND_END_MODULE_GLOBALS(libvirt)
