@@ -4,15 +4,14 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_NETWORK_H__
-# define __LIBVIRT_NETWORK_H__
+#pragma once
 
-# include "libvirt-connection.h"
+#include "libvirt-connection.h"
 
-# define PHP_LIBVIRT_NETWORK_RES_NAME "Libvirt virtual network"
-# define INT_RESOURCE_NETWORK 0x04
+#define PHP_LIBVIRT_NETWORK_RES_NAME "Libvirt virtual network"
+#define INT_RESOURCE_NETWORK 0x04
 
-# define GET_NETWORK_FROM_ARGS(args, ...)                                      \
+#define GET_NETWORK_FROM_ARGS(args, ...)                                       \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -28,7 +27,7 @@
             RETURN_FALSE;                                                      \
     } while (0)                                                                \
 
-# define PHP_FE_LIBVIRT_NETWORK                                                \
+#define PHP_FE_LIBVIRT_NETWORK                                                 \
     PHP_FE(libvirt_network_define_xml,      arginfo_libvirt_conn_xml)          \
     PHP_FE(libvirt_network_get_xml_desc,    arginfo_libvirt_conn_xpath)        \
     PHP_FE(libvirt_network_undefine,        arginfo_libvirt_conn)              \
@@ -71,5 +70,3 @@ PHP_FUNCTION(libvirt_network_set_autostart);
 PHP_FUNCTION(libvirt_list_all_networks);
 PHP_FUNCTION(libvirt_list_networks);
 PHP_FUNCTION(libvirt_network_get_dhcp_leases);
-
-#endif

@@ -4,8 +4,7 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __VNCFUNC_H__
-# define __VNCFUNC_H__
+#pragma once
 
 int vnc_get_bitmap(char *server,
                    char *port,
@@ -30,5 +29,3 @@ int vnc_send_pointer_event(char *server,
                            int pos_y,
                            int clicked,
                            int release);
-
-#endif /* __VNCFUNC_H__ */

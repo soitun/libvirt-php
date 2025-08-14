@@ -4,15 +4,14 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_SNAPSHOT_H__
-# define __LIBVIRT_SNAPSHOT_H__
+#pragma once
 
-# include "libvirt-domain.h"
+#include "libvirt-domain.h"
 
-# define PHP_LIBVIRT_SNAPSHOT_RES_NAME "Libvirt domain snapshot"
-# define INT_RESOURCE_SNAPSHOT 0x40
+#define PHP_LIBVIRT_SNAPSHOT_RES_NAME "Libvirt domain snapshot"
+#define INT_RESOURCE_SNAPSHOT 0x40
 
-# define PHP_FE_LIBVIRT_SNAPSHOT                                                                   \
+#define PHP_FE_LIBVIRT_SNAPSHOT                                                                    \
     PHP_FE(libvirt_domain_has_current_snapshot,    arginfo_libvirt_conn_optflags)                  \
     PHP_FE(libvirt_domain_snapshot_lookup_by_name, arginfo_libvirt_domain_snapshot_lookup_by_name) \
     PHP_FE(libvirt_domain_snapshot_create,         arginfo_libvirt_conn_optflags)                  \
@@ -23,7 +22,7 @@
     PHP_FE(libvirt_domain_snapshot_delete,         arginfo_libvirt_conn_optflags)                  \
     PHP_FE(libvirt_list_domain_snapshots,          arginfo_libvirt_conn_optflags)
 
-# define GET_SNAPSHOT_FROM_ARGS(args, ...)                                     \
+#define GET_SNAPSHOT_FROM_ARGS(args, ...)                                      \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -58,5 +57,3 @@ PHP_FUNCTION(libvirt_domain_snapshot_get_xml);
 PHP_FUNCTION(libvirt_domain_snapshot_revert);
 PHP_FUNCTION(libvirt_domain_snapshot_delete);
 PHP_FUNCTION(libvirt_list_domain_snapshots);
-
-#endif

@@ -4,8 +4,7 @@
  * See COPYING for the license of this software
  */
 
-#ifndef PHP_LIBVIRT_H
-#define PHP_LIBVIRT_H 1
+#pragma once
 
 /* Network constants */
 #define VIR_NETWORKS_ACTIVE     1
@@ -193,5 +192,3 @@ PHP_FUNCTION(libvirt_print_binding_resources);
 
 extern zend_module_entry libvirt_module_entry;
 #define phpext_libvirt_ptr &libvirt_module_entry
-
-#endif

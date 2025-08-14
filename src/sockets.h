@@ -4,8 +4,7 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __SOCKETS_H__
-# define __SOCKETS_H__
+#pragma once
 
 int connect_socket(const char *server,
                    const char *port,
@@ -23,5 +22,3 @@ void socket_read(int sfd,
 int socket_read_and_save(int sfd,
                          char *fn,
                          long length);
-
-#endif /* __SOCKETS_H__ */

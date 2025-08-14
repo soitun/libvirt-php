@@ -4,14 +4,13 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_CONNECTION_H__
-# define __LIBVIRT_CONNECTION_H__
+#pragma once
 
-# define PHP_LIBVIRT_CONNECTION_RES_NAME "Libvirt connection"
-# define INT_RESOURCE_CONNECTION 0x01
-# define CONNECT_FLAG_SOUNDHW_GET_NAMES  0x01
+#define PHP_LIBVIRT_CONNECTION_RES_NAME "Libvirt connection"
+#define INT_RESOURCE_CONNECTION 0x01
+#define CONNECT_FLAG_SOUNDHW_GET_NAMES  0x01
 
-# define PHP_FE_LIBVIRT_CONNECTION                                                             \
+#define PHP_FE_LIBVIRT_CONNECTION                                                              \
     PHP_FE(libvirt_connect,                      arginfo_libvirt_connect)                      \
     PHP_FE(libvirt_connect_get_uri,              arginfo_libvirt_conn)                         \
     PHP_FE(libvirt_connect_get_hostname,         arginfo_libvirt_conn)                         \
@@ -29,7 +28,7 @@
     PHP_FE(libvirt_connect_get_machine_types,    arginfo_libvirt_conn)                         \
     PHP_FE(libvirt_connect_get_all_domain_stats, arginfo_libvirt_connect_get_all_domain_stats)
 
-# define GET_CONNECTION_FROM_ARGS(args, ...)                                   \
+#define GET_CONNECTION_FROM_ARGS(args, ...)                                    \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -79,5 +78,3 @@ PHP_FUNCTION(libvirt_connect_get_secure);
 PHP_FUNCTION(libvirt_connect_get_information);
 PHP_FUNCTION(libvirt_connect_get_machine_types);
 PHP_FUNCTION(libvirt_connect_get_all_domain_stats);
-
-#endif

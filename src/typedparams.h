@@ -4,8 +4,7 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __TYPEDPARAMS_H__
-# define __TYPEDPARAMS_H__
+#pragma once
 
 #include <libvirt/libvirt.h>
 
@@ -20,5 +19,3 @@ parseTypedParameter(zval *zend_params,
                     int *nparamsRet,
                     virPHPTypedParamsHint *hint,
                     int nhints);
-
-#endif /* __TYPEDPARAMS_H__ */

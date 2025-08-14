@@ -4,15 +4,14 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_STREAM_H__
-# define __LIBVIRT_STREAM_H__
+#pragma once
 
-# include "libvirt-connection.h"
+#include "libvirt-connection.h"
 
-# define PHP_LIBVIRT_STREAM_RES_NAME "Libvirt stream"
-# define INT_RESOURCE_STREAM 0x50
+#define PHP_LIBVIRT_STREAM_RES_NAME "Libvirt stream"
+#define INT_RESOURCE_STREAM 0x50
 
-# define PHP_FE_LIBVIRT_STREAM                                                 \
+#define PHP_FE_LIBVIRT_STREAM                                                  \
     PHP_FE(libvirt_stream_create, arginfo_libvirt_conn)                        \
     PHP_FE(libvirt_stream_close,  arginfo_libvirt_conn)                        \
     PHP_FE(libvirt_stream_abort,  arginfo_libvirt_conn)                        \
@@ -35,5 +34,3 @@ PHP_FUNCTION(libvirt_stream_abort);
 PHP_FUNCTION(libvirt_stream_finish);
 PHP_FUNCTION(libvirt_stream_recv);
 PHP_FUNCTION(libvirt_stream_send);
-
-#endif

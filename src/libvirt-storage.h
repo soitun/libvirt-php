@@ -4,17 +4,16 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_STORAGE_H__
-# define __LIBVIRT_STORAGE_H__
+#pragma once
 
-# include "libvirt-connection.h"
+#include "libvirt-connection.h"
 
-# define PHP_LIBVIRT_STORAGEPOOL_RES_NAME "Libvirt storagepool"
-# define PHP_LIBVIRT_VOLUME_RES_NAME "Libvirt volume"
-# define INT_RESOURCE_STORAGEPOOL 0x10
-# define INT_RESOURCE_VOLUME 0x20
+#define PHP_LIBVIRT_STORAGEPOOL_RES_NAME "Libvirt storagepool"
+#define PHP_LIBVIRT_VOLUME_RES_NAME "Libvirt volume"
+#define INT_RESOURCE_STORAGEPOOL 0x10
+#define INT_RESOURCE_VOLUME 0x20
 
-# define PHP_FE_LIBVIRT_STORAGE                                                                      \
+#define PHP_FE_LIBVIRT_STORAGE                                                                       \
     PHP_FE(libvirt_storagepool_lookup_by_name,        arginfo_libvirt_conn_name)                     \
     PHP_FE(libvirt_storagepool_lookup_by_volume,      arginfo_libvirt_conn)                          \
     PHP_FE(libvirt_storagepool_list_volumes,          arginfo_libvirt_conn)                          \
@@ -50,7 +49,7 @@
     PHP_FE(libvirt_list_active_storagepools,          arginfo_libvirt_conn)                          \
     PHP_FE(libvirt_list_inactive_storagepools,        arginfo_libvirt_conn)
 
-# define GET_STORAGEPOOL_FROM_ARGS(args, ...)                                  \
+#define GET_STORAGEPOOL_FROM_ARGS(args, ...)                                   \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -67,7 +66,7 @@
             RETURN_FALSE;                                                      \
     } while (0)                                                                \
 
-# define GET_VOLUME_FROM_ARGS(args, ...)                                       \
+#define GET_VOLUME_FROM_ARGS(args, ...)                                        \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -133,5 +132,3 @@ PHP_FUNCTION(libvirt_storagevolume_resize);
 PHP_FUNCTION(libvirt_list_storagepools);
 PHP_FUNCTION(libvirt_list_active_storagepools);
 PHP_FUNCTION(libvirt_list_inactive_storagepools);
-
-#endif

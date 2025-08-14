@@ -4,22 +4,21 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_NODEDEV_H__
-# define __LIBVIRT_NODEDEV_H__
+#pragma once
 
-# include "libvirt-connection.h"
+#include "libvirt-connection.h"
 
-# define PHP_LIBVIRT_NODEDEV_RES_NAME "Libvirt node device"
-# define INT_RESOURCE_NODEDEV 0x08
+#define PHP_LIBVIRT_NODEDEV_RES_NAME "Libvirt node device"
+#define INT_RESOURCE_NODEDEV 0x08
 
-# define PHP_FE_LIBVIRT_NODEDEV                                                \
+#define PHP_FE_LIBVIRT_NODEDEV                                                 \
     PHP_FE(libvirt_nodedev_get,             arginfo_libvirt_conn)              \
     PHP_FE(libvirt_nodedev_capabilities,    arginfo_libvirt_conn)              \
     PHP_FE(libvirt_nodedev_get_xml_desc,    arginfo_libvirt_conn_xpath)        \
     PHP_FE(libvirt_nodedev_get_information, arginfo_libvirt_conn)              \
     PHP_FE(libvirt_list_nodedevs,           arginfo_libvirt_conn_optcap)
 
-# define GET_NODEDEV_FROM_ARGS(args, ...)                                      \
+#define GET_NODEDEV_FROM_ARGS(args, ...)                                       \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -50,5 +49,3 @@ PHP_FUNCTION(libvirt_nodedev_capabilities);
 PHP_FUNCTION(libvirt_nodedev_get_xml_desc);
 PHP_FUNCTION(libvirt_nodedev_get_information);
 PHP_FUNCTION(libvirt_list_nodedevs);
-
-#endif

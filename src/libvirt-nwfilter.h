@@ -4,15 +4,14 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_NWFILTER_H__
-# define __LIBVIRT_NWFILTER_H__
+#pragma once
 
-# include "libvirt-connection.h"
+#include "libvirt-connection.h"
 
-# define PHP_LIBVIRT_NWFILTER_RES_NAME "Libvirt nwfilter"
-# define INT_RESOURCE_NWFILTER 0x60
+#define PHP_LIBVIRT_NWFILTER_RES_NAME "Libvirt nwfilter"
+#define INT_RESOURCE_NWFILTER 0x60
 
-# define PHP_FE_LIBVIRT_NWFILTER                                               \
+#define PHP_FE_LIBVIRT_NWFILTER                                                \
     PHP_FE(libvirt_nwfilter_define_xml,            arginfo_libvirt_conn_xml)   \
     PHP_FE(libvirt_nwfilter_undefine,              arginfo_libvirt_conn)       \
     PHP_FE(libvirt_nwfilter_get_xml_desc,          arginfo_libvirt_conn_xpath) \
@@ -25,7 +24,7 @@
     PHP_FE(libvirt_list_all_nwfilters,             arginfo_libvirt_conn)       \
     PHP_FE(libvirt_list_nwfilters,                 arginfo_libvirt_conn)
 
-# define GET_NWFILTER_FROM_ARGS(args, ...)                                     \
+#define GET_NWFILTER_FROM_ARGS(args, ...)                                      \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -62,5 +61,3 @@ PHP_FUNCTION(libvirt_nwfilter_lookup_by_uuid_string);
 PHP_FUNCTION(libvirt_nwfilter_lookup_by_uuid);
 PHP_FUNCTION(libvirt_list_all_nwfilters);
 PHP_FUNCTION(libvirt_list_nwfilters);
-
-#endif

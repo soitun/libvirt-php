@@ -4,26 +4,25 @@
  * See COPYING for the license of this software
  */
 
-#ifndef __LIBVIRT_DOMAIN_H__
-# define __LIBVIRT_DOMAIN_H__
+#pragma once
 
-# include "libvirt-connection.h"
+#include "libvirt-connection.h"
 
-# define PHP_LIBVIRT_DOMAIN_RES_NAME "Libvirt domain"
-# define INT_RESOURCE_DOMAIN 0x02
+#define PHP_LIBVIRT_DOMAIN_RES_NAME "Libvirt domain"
+#define INT_RESOURCE_DOMAIN 0x02
 
-# define DOMAIN_DISK_FILE            0x01
-# define DOMAIN_DISK_BLOCK           0x02
-# define DOMAIN_DISK_ACCESS_ALL      0x04
+#define DOMAIN_DISK_FILE            0x01
+#define DOMAIN_DISK_BLOCK           0x02
+#define DOMAIN_DISK_ACCESS_ALL      0x04
 
-# define DOMAIN_FLAG_FEATURE_ACPI    0x01
-# define DOMAIN_FLAG_FEATURE_APIC    0x02
-# define DOMAIN_FLAG_FEATURE_PAE     0x04
-# define DOMAIN_FLAG_CLOCK_LOCALTIME 0x08
-# define DOMAIN_FLAG_TEST_LOCAL_VNC  0x10
-# define DOMAIN_FLAG_SOUND_AC97      0x20
+#define DOMAIN_FLAG_FEATURE_ACPI    0x01
+#define DOMAIN_FLAG_FEATURE_APIC    0x02
+#define DOMAIN_FLAG_FEATURE_PAE     0x04
+#define DOMAIN_FLAG_CLOCK_LOCALTIME 0x08
+#define DOMAIN_FLAG_TEST_LOCAL_VNC  0x10
+#define DOMAIN_FLAG_SOUND_AC97      0x20
 
-# define GET_DOMAIN_FROM_ARGS(args, ...)                                       \
+#define GET_DOMAIN_FROM_ARGS(args, ...)                                        \
     do {                                                                       \
         reset_error();                                                         \
         if (zend_parse_parameters(ZEND_NUM_ARGS(),                             \
@@ -39,7 +38,7 @@
             RETURN_FALSE;                                                      \
     } while (0)                                                                \
 
-# define PHP_FE_LIBVIRT_DOMAIN                                                                 \
+#define PHP_FE_LIBVIRT_DOMAIN                                                                  \
     PHP_FE(libvirt_domain_new,                   arginfo_libvirt_domain_new)                   \
     PHP_FE(libvirt_domain_new_get_vnc,           arginfo_libvirt_void)                         \
     PHP_FE(libvirt_domain_get_counts,            arginfo_libvirt_conn)                         \
@@ -220,5 +219,3 @@ PHP_FUNCTION(libvirt_list_active_domains);
 PHP_FUNCTION(libvirt_list_inactive_domains);
 PHP_FUNCTION(libvirt_domain_get_cpu_total_stats);
 PHP_FUNCTION(libvirt_domain_rename);
-
-#endif
