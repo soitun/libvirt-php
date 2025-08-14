@@ -43,6 +43,10 @@
 
 #define ARRAY_CARDINALITY(array) (sizeof(array) / sizeof(array[0]))
 
+#ifndef ATTRIBUTE_UNUSED
+# define ATTRIBUTE_UNUSED __attribute__((__unused__))
+#endif
+
 #define IS_BIGENDIAN (*(uint16_t *)"\0\xff" < 0x100)
 
 #define SWAP2_BY_ENDIAN(le, v1, v2)    \
