@@ -236,8 +236,8 @@ class Libvirt {
         // create image as: qemu-img create -f qcow2 -o backing_file=RAW_IMG OUT_QCOW_IMG SIZE[K,M,G suffixed]
 
         $ret = array();
-        for ($i = 0; $i < $disks['num']; $i++) {
-            $tmp = libvirt_domain_get_block_info($dom, $disks[$i]);
+        for ($i = 0; $disks != false && $i < $disks['num']; $i++) {
+            $tmp = @libvirt_domain_get_block_info($dom, $disks[$i]);
             if ($tmp) {
                 $tmp['bus'] = $buses[$i];
                 $ret[] = $tmp;
