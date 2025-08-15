@@ -367,7 +367,7 @@
              "</tr>" .
              "<tr>" .
              "<td>Total memory installed: </td>" .
-             "<td>".number_format(($tmp['memory'] / 1048576), 2, '.', ' ')."GB </td>" .
+             "<td>".$lv->format_size($tmp['memory'] * 1024, 2)."</td>" .
              "</tr>" .
              "<tr>" .
              "<td>Total processor count: </td>" .
@@ -514,7 +514,7 @@
 
         $dom = $lv->get_domain_object($domName);
         $info = $lv->domain_get_info($dom);
-        $mem = number_format($info['memory'] / 1024, 2, '.', ' ').' MB';
+        $mem = $lv->format_size($info['memory'] * 1024, 2);
         $cpu = $info['nrVirtCpu'];
         $state = $lv->domain_state_translate($info['state']);
         $id = $lv->domain_get_id($dom);
@@ -716,7 +716,7 @@
             $uuid = libvirt_domain_get_uuid_string($dom);
             $active = $lv->domain_is_active($dom);
             $info = $lv->domain_get_info($dom);
-            $mem = number_format($info['memory'] / 1024, 2, '.', ' ').' MB';
+            $mem = $lv->format_size($info['memory'] * 1024, 2);
             $cpu = $info['nrVirtCpu'];
             $state = $lv->domain_state_translate($info['state']);
             $id = $lv->domain_get_id($dom);
