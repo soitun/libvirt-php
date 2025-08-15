@@ -92,9 +92,9 @@
         echo "<h2>Storage pools</h2>";
         echo "Here's the list of the storage pools available on the connection.<br/><br/>";
 
-        echo "<table>";
+        echo "<table>\n";
         echo "<tr>" .
-             "<th>Name<th>" .
+             "<th>Name</th>" .
              "<th>Activity</th>" .
              "<th>Volume count</th>" .
              "<th>State</th>" .
@@ -105,7 +105,7 @@
              "<th>Permissions</th>" .
              "<th>Ownership</th>" .
              "<th>Actions</th>" .
-             "</tr>";
+             "</tr>\n";
 
         $pools = $lv->get_storagepools();
         for ($i = 0; $i < sizeof($pools); $i++) {
@@ -113,7 +113,7 @@
             $act = $info['active'] ? 'Active' : 'Inactive';
 
             echo "<tr align=\"center\">" .
-                 "<td>$spaces{$pools[$i]}$spaces<td>" .
+                 "<td>$spaces{$pools[$i]}$spaces</td>" .
                  "<td>$spaces$act$spaces</td>" .
                  "<td>$spaces{$info['volume_count']}$spaces</td>" .
                  "<td>$spaces{$lv->translate_storagepool_state($info['state'])}$spaces</td>" .
@@ -124,11 +124,11 @@
                  "<td>$spaces{$lv->translate_perms($info['permissions'])}$spaces</td>" .
                  "<td>$spaces{$info['id_user']} / {$info['id_group']}$spaces</td>" .
                  "<td>$spaces<a href=\"?action=storage-pools&amp;pool={$pools[$i]}&amp;subaction=volume-create\">Create volume</a>$spaces</td>" .
-                 "</tr>";
+                 "</tr>\n";
 
             if ($info['volume_count'] > 0) {
                 echo "<tr>" .
-                     "<td colspan=\"10\" style='padding-left: 40px'><table>" .
+                     "<td colspan=\"11\" style='padding-left: 40px; padding-right: 40px'><table style='width: 100%'>" .
                      "<tr>" .
                      "<th>Name</th>" .
                      "<th>Type</th>" .
@@ -136,7 +136,7 @@
                      "<th>Allocation</th>" .
                      "<th>Path</th>" .
                      "<th>Actions</th>" .
-                     "</tr>";
+                     "</tr>\n";
                 $tmp = $lv->storagepool_get_volume_information($pools[$i]);
                 $tmp_keys = array_keys($tmp);
                 for ($ii = 0; $ii < sizeof($tmp); $ii++) {
@@ -148,14 +148,14 @@
                          "<td>$spaces{$lv->format_size($tmp[$tmp_keys[$ii]]['allocation'], 2)}$spaces</td>" .
                          "<td>$spaces{$tmp[$tmp_keys[$ii]]['path']}$spaces</td>" .
                          "<td>$spaces<a href=\"?action=storage-pools&amp;path=$path&amp;subaction=volume-delete\">Delete volume</a>$spaces</td>" .
-                         "</tr>";
+                         "</tr>\n";
                 }
 
                 echo "</table></td>" .
-                     "</tr>";
+                     "</tr>\n";
             }
         }
-        echo "</table>";
+        echo "</table>\n";
 
         echo (strpos($msg, '<form')) ? $msg : '<pre>'.$msg.'</pre>';
     } else if ($action == 'node-devices') {
