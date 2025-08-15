@@ -453,6 +453,12 @@ ZEND_ARG_INFO(0, capacity)
 ZEND_ARG_INFO(0, flags)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_libvirt_storagepool_get_xml_desc, 0, 0, 1)
+ZEND_ARG_INFO(0, conn)
+ZEND_ARG_INFO(0, xpath)
+ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_libvirt_storagepool_define_xml, 0, 0, 2)
 ZEND_ARG_INFO(0, conn)
 ZEND_ARG_INFO(0, xml)
@@ -1518,6 +1524,7 @@ PHP_MINIT_FUNCTION(libvirt)
     /* Forcibly modify device (ex. force eject a cdrom) */
     REGISTER_LONG_CONSTANT("VIR_DOMAIN_DEVICE_MODIFY_FORCE",    4, CONST_CS | CONST_PERSISTENT);
 
+    REGISTER_LONG_CONSTANT("VIR_STORAGE_XML_INACTIVE",          1, CONST_CS | CONST_PERSISTENT);
     /* REGISTER_LONG_CONSTANT */
     REGISTER_LONG_CONSTANT("VIR_STORAGE_POOL_BUILD_NEW",        0, CONST_CS | CONST_PERSISTENT);
     /* Repair / reinitialize */

@@ -21,7 +21,7 @@
     PHP_FE(libvirt_storagepool_get_uuid_string,       arginfo_libvirt_conn)                          \
     PHP_FE(libvirt_storagepool_get_name,              arginfo_libvirt_conn)                          \
     PHP_FE(libvirt_storagepool_lookup_by_uuid_string, arginfo_libvirt_conn_uuid)                     \
-    PHP_FE(libvirt_storagepool_get_xml_desc,          arginfo_libvirt_conn_xpath)                    \
+    PHP_FE(libvirt_storagepool_get_xml_desc,          arginfo_libvirt_storagepool_get_xml_desc)      \
     PHP_FE(libvirt_storagepool_define_xml,            arginfo_libvirt_storagepool_define_xml)        \
     PHP_FE(libvirt_storagepool_undefine,              arginfo_libvirt_conn)                          \
     PHP_FE(libvirt_storagepool_create,                arginfo_libvirt_conn)                          \

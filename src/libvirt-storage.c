@@ -299,6 +299,7 @@ PHP_FUNCTION(libvirt_storagepool_lookup_by_uuid_string)
  * Description:     Function is used to get the XML description for the storage pool identified by res
  * Arguments:       @res [resource]: libvirt storagepool resource
  *                  @xpath [string]: optional xPath expression string to get just this entry, can be NULL
+ *                  @flags [int]: flags for virStoragePoolGetXMLDesc (available at https://libvirt.org/html/libvirt-libvirt-storage.html#virStoragePoolGetXMLDesc)
  * Returns:         storagepool XML description string or result of xPath expression
  */
 PHP_FUNCTION(libvirt_storagepool_get_xml_desc)
@@ -312,7 +313,7 @@ PHP_FUNCTION(libvirt_storagepool_get_xml_desc)
     size_t xpath_len;
     int retval = -1;
 
-    GET_STORAGEPOOL_FROM_ARGS("r|s", &zpool, &xpath, &xpath_len, &flags);
+    GET_STORAGEPOOL_FROM_ARGS("r|s!l", &zpool, &xpath, &xpath_len, &flags);
     if (xpath_len < 1)
         xpath = NULL;
 
