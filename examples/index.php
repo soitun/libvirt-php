@@ -774,7 +774,7 @@
             if (!$lv->domain_is_running($name))
                 echo "| <a href=\"?action=domain-edit&amp;uuid=$uuid\">Edit domain XML</a>";
             else if ($active > 0)
-                echo "| <a href=\"?action=get-screenshot&amp;uuid=${uuid}&amp;download=1\">Get screenshot</a>";
+                echo "| <a href=\"?action=get-screenshot&amp;uuid={$uuid}&amp;download=1\">Get screenshot</a>";
 
             echo "$spaces" .
                   "</td>" .
