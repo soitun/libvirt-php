@@ -411,12 +411,23 @@ class Libvirt {
         $perms = libvirt_storagepool_get_xml_desc($res, '/pool/target/permissions/mode');
         if (!$perms)
             return $this->_set_last_error();
+        /* libvirt_storagepool_get_xml_desc() returns the original XML if XPATH
+         * doesn't exist. */
+        if (str_starts_with($perms, "<pool")) {
+            $perms = "N/A";
+        }
         $otmp1 = libvirt_storagepool_get_xml_desc($res, '/pool/target/permissions/owner');
         if (!is_string($otmp1))
             return $this->_set_last_error();
+        if (str_starts_with($otmp1[0], "<pool")) {
+            $otmp1 = "N/A";
+        }
         $otmp2 = libvirt_storagepool_get_xml_desc($res, '/pool/target/permissions/group');
         if (!is_string($otmp2))
             return $this->_set_last_error();
+        if (str_starts_with($otmp2[0], "<pool")) {
+            $otmp2 = "N/A";
+        }
         $tmp = libvirt_storagepool_get_info($res);
         $tmp['active'] = libvirt_storagepool_is_active($res);
         $tmp['path'] = $path;
