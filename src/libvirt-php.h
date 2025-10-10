@@ -166,7 +166,7 @@ char *installation_get_xml(virConnectPtr conn, char *name, int memMB,
                            tVMNetwork *networks, int numNetworks,
                            int domain_flags);
 void set_vnc_location(char *msg);
-int streamSink(virStreamPtr st ATTRIBUTE_UNUSED,
+int streamSink(virStreamPtr st,
                const char *bytes, size_t nbytes, void *opaque);
 const char *get_feature_binary(const char *name);
 long get_next_free_numeric_value(virDomainPtr domain, char *xpath);
