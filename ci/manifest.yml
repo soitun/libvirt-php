@@ -7,13 +7,13 @@ gitlab:
   project: libvirt-php
 
 targets:
-  alpine-319:
+  alpine-321:
     jobs:
       - arch: x86_64
         variables:
           CONFIGURE_ARGS: --with-php=/usr/bin/php83 --with-php-config=/usr/bin/php-config83
 
-  alpine-320:
+  alpine-322:
     jobs:
       - arch: x86_64
         variables:
@@ -26,7 +26,9 @@ targets:
         variables:
           CONFIGURE_ARGS: --with-php=/usr/bin/php83 --with-php-config=/usr/bin/php-config83
 
-  debian-12:
+  debian-12: x86_64
+
+  debian-13:
     projects:
       - libvirt-php
       - https://gitlab.com/libvirt/libvirt/-/raw/master/ci/lcitool/projects/libvirt+minimal.yml
@@ -44,9 +46,9 @@ targets:
         allow-failure: true
 
 
-  fedora-39: x86_64
+  fedora-42: x86_64
 
-  fedora-40: x86_64
+  fedora-43: x86_64
 
   fedora-rawhide:
     jobs:

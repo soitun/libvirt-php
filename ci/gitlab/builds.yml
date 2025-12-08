@@ -7,28 +7,28 @@
 
 # Native build jobs
 
-x86_64-alpine-319:
+x86_64-alpine-321:
   extends: .native_build_job
   needs:
-    - job: x86_64-alpine-319-container
+    - job: x86_64-alpine-321-container
       optional: true
   allow_failure: false
   variables:
     CONFIGURE_ARGS: --with-php=/usr/bin/php83 --with-php-config=/usr/bin/php-config83
-    NAME: alpine-319
-    TARGET_BASE_IMAGE: docker.io/library/alpine:3.19
+    NAME: alpine-321
+    TARGET_BASE_IMAGE: docker.io/library/alpine:3.21
 
 
-x86_64-alpine-320:
+x86_64-alpine-322:
   extends: .native_build_job
   needs:
-    - job: x86_64-alpine-320-container
+    - job: x86_64-alpine-322-container
       optional: true
   allow_failure: false
   variables:
     CONFIGURE_ARGS: --with-php=/usr/bin/php83 --with-php-config=/usr/bin/php-config83
-    NAME: alpine-320
-    TARGET_BASE_IMAGE: docker.io/library/alpine:3.20
+    NAME: alpine-322
+    TARGET_BASE_IMAGE: docker.io/library/alpine:3.22
 
 
 x86_64-alpine-edge:
@@ -54,15 +54,26 @@ x86_64-debian-12:
     TARGET_BASE_IMAGE: docker.io/library/debian:12-slim
 
 
-x86_64-debian-12-git:
-  extends: .native_git_build_job
+x86_64-debian-13:
+  extends: .native_build_job
   needs:
-    - job: x86_64-debian-12-container
+    - job: x86_64-debian-13-container
       optional: true
   allow_failure: false
   variables:
-    NAME: debian-12
-    TARGET_BASE_IMAGE: docker.io/library/debian:12-slim
+    NAME: debian-13
+    TARGET_BASE_IMAGE: docker.io/library/debian:13-slim
+
+
+x86_64-debian-13-git:
+  extends: .native_git_build_job
+  needs:
+    - job: x86_64-debian-13-container
+      optional: true
+  allow_failure: false
+  variables:
+    NAME: debian-13
+    TARGET_BASE_IMAGE: docker.io/library/debian:13-slim
 
 
 x86_64-debian-sid:
@@ -76,26 +87,26 @@ x86_64-debian-sid:
     TARGET_BASE_IMAGE: docker.io/library/debian:sid-slim
 
 
-x86_64-fedora-39:
+x86_64-fedora-42:
   extends: .native_build_job
   needs:
-    - job: x86_64-fedora-39-container
+    - job: x86_64-fedora-42-container
       optional: true
   allow_failure: false
   variables:
-    NAME: fedora-39
-    TARGET_BASE_IMAGE: registry.fedoraproject.org/fedora:39
+    NAME: fedora-42
+    TARGET_BASE_IMAGE: registry.fedoraproject.org/fedora:42
 
 
-x86_64-fedora-40:
+x86_64-fedora-43:
   extends: .native_build_job
   needs:
-    - job: x86_64-fedora-40-container
+    - job: x86_64-fedora-43-container
       optional: true
   allow_failure: false
   variables:
-    NAME: fedora-40
-    TARGET_BASE_IMAGE: registry.fedoraproject.org/fedora:40
+    NAME: fedora-43
+    TARGET_BASE_IMAGE: registry.fedoraproject.org/fedora:43
 
 
 x86_64-fedora-rawhide:
